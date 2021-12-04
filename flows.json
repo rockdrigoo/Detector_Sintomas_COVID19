@@ -1,0 +1,500 @@
+[
+    {
+        "id": "f290329962f30c67",
+        "type": "tab",
+        "label": "Flow 7",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "8207a975ab0166ca",
+        "type": "mqtt in",
+        "z": "f290329962f30c67",
+        "name": "",
+        "topic": "codigoIoT/nodejs/temp",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "aa3107cbb6f29f72",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "x": 240,
+        "y": 120,
+        "wires": [
+            [
+                "8c8882f9eca77763"
+            ]
+        ]
+    },
+    {
+        "id": "8c8882f9eca77763",
+        "type": "function",
+        "z": "f290329962f30c67",
+        "name": "",
+        "func": "global.set (\"temperatura\",msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 120,
+        "wires": [
+            [
+                "de149596a2800aa6"
+            ]
+        ]
+    },
+    {
+        "id": "f38e96b85b1c1472",
+        "type": "mqtt in",
+        "z": "f290329962f30c67",
+        "name": "",
+        "topic": "codigoIoT/nodejs/SPO2",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "aa3107cbb6f29f72",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "x": 240,
+        "y": 180,
+        "wires": [
+            [
+                "b13d7432e913aed7"
+            ]
+        ]
+    },
+    {
+        "id": "5ec8409132c2d1c6",
+        "type": "mqtt in",
+        "z": "f290329962f30c67",
+        "name": "",
+        "topic": "codigoIoT/nodejs/BPM",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "aa3107cbb6f29f72",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "x": 240,
+        "y": 240,
+        "wires": [
+            [
+                "8a7720b54427a733"
+            ]
+        ]
+    },
+    {
+        "id": "b13d7432e913aed7",
+        "type": "function",
+        "z": "f290329962f30c67",
+        "name": "",
+        "func": "global.set (\"oxigenacion\",msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 180,
+        "wires": [
+            [
+                "8f3d2d7a8c522601"
+            ]
+        ]
+    },
+    {
+        "id": "8a7720b54427a733",
+        "type": "function",
+        "z": "f290329962f30c67",
+        "name": "",
+        "func": "global.set (\"bpm\",msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 240,
+        "wires": [
+            [
+                "28a50277ef789ca6"
+            ]
+        ]
+    },
+    {
+        "id": "de149596a2800aa6",
+        "type": "ui_text",
+        "z": "f290329962f30c67",
+        "group": "4b22204e5a8579e1",
+        "order": 7,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Temperatura",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 770,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "8f3d2d7a8c522601",
+        "type": "ui_text",
+        "z": "f290329962f30c67",
+        "group": "4b22204e5a8579e1",
+        "order": 8,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Oxigenación",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 770,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "28a50277ef789ca6",
+        "type": "ui_text",
+        "z": "f290329962f30c67",
+        "group": "4b22204e5a8579e1",
+        "order": 9,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Ritmo Cardiaco",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 780,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "bc82868876cd1806",
+        "type": "ui_text_input",
+        "z": "f290329962f30c67",
+        "name": "",
+        "label": "Nombre del paciente - In",
+        "tooltip": "",
+        "group": "4b22204e5a8579e1",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": "0",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 250,
+        "y": 300,
+        "wires": [
+            [
+                "5fab7b64bd2afa49"
+            ]
+        ]
+    },
+    {
+        "id": "5fab7b64bd2afa49",
+        "type": "function",
+        "z": "f290329962f30c67",
+        "name": "",
+        "func": "global.set (\"nombre\", msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "21dbf11ff0b4df17",
+        "type": "ui_text",
+        "z": "f290329962f30c67",
+        "group": "4b22204e5a8579e1",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Nombre del paciente - out",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "x": 810,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "d5b3a07b76d3c3ee",
+        "type": "function",
+        "z": "f290329962f30c67",
+        "name": "",
+        "func": "msg.payload = global.get (\"nombre\");\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 360,
+        "wires": [
+            [
+                "21dbf11ff0b4df17"
+            ]
+        ]
+    },
+    {
+        "id": "5c4309d312b1ba63",
+        "type": "inject",
+        "z": "f290329962f30c67",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 210,
+        "y": 360,
+        "wires": [
+            [
+                "d5b3a07b76d3c3ee"
+            ]
+        ]
+    },
+    {
+        "id": "216eccd822d51c16",
+        "type": "mysql",
+        "z": "f290329962f30c67",
+        "mydb": "5985bd1225719007",
+        "name": "",
+        "x": 750,
+        "y": 420,
+        "wires": [
+            [
+                "3b74dd6ab3b1a36a"
+            ]
+        ]
+    },
+    {
+        "id": "977c52b35a3a8b0b",
+        "type": "function",
+        "z": "f290329962f30c67",
+        "name": "",
+        "func": "msg.topic=\"INSERT INTO covid (nombre,temp,spO2,bpm) VALUES ('\"+global.get(\"nombre\")+\"','\"+global.get(\"temperatura\")+\"','\"+global.get(\"oxigenacion\")+\"','\"+global.get(\"bpm\")+\"')\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 420,
+        "wires": [
+            [
+                "216eccd822d51c16"
+            ]
+        ]
+    },
+    {
+        "id": "cfd0d845278a0ebe",
+        "type": "ui_button",
+        "z": "f290329962f30c67",
+        "name": "",
+        "group": "4b22204e5a8579e1",
+        "order": 10,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Guardar Valores",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "ok",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 220,
+        "y": 420,
+        "wires": [
+            [
+                "977c52b35a3a8b0b",
+                "27fa579d9e27aaf9"
+            ]
+        ]
+    },
+    {
+        "id": "3b74dd6ab3b1a36a",
+        "type": "ui_toast",
+        "z": "f290329962f30c67",
+        "position": "top right",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "topic": "",
+        "name": "",
+        "x": 940,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "27fa579d9e27aaf9",
+        "type": "function",
+        "z": "f290329962f30c67",
+        "name": "",
+        "func": "var temperatura1 = global.get (\"temperatura\");\nvar oxigenacion1 = global.get (\"oxigenacion\");\nvar nombre1 = global.get (\"nombre\");\nif (temperatura1 > 36.9 || oxigenacion1 < 90) {\n    msg.payload = \"El paciente \" + nombre1 + \" debe consultar un médico\";\n} else {\n    msg.payload = \"El paciente \" + nombre1 + \" tiene signos vitales normales\";\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 480,
+        "wires": [
+            [
+                "dc39b84cdf7af25a",
+                "c2e0b5f019b49efa"
+            ]
+        ]
+    },
+    {
+        "id": "dc39b84cdf7af25a",
+        "type": "ui_audio",
+        "z": "f290329962f30c67",
+        "name": "",
+        "group": "4b22204e5a8579e1",
+        "voice": "urn:moz-tts:speechd:Spanish%20(Spain)?es",
+        "always": "",
+        "x": 760,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "c2e0b5f019b49efa",
+        "type": "debug",
+        "z": "f290329962f30c67",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 770,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "2c0c4fa2338e1ee7",
+        "type": "ui_spacer",
+        "z": "f290329962f30c67",
+        "name": "spacer",
+        "group": "4b22204e5a8579e1",
+        "order": 2,
+        "width": 6,
+        "height": 1
+    },
+    {
+        "id": "2d708841f4310691",
+        "type": "ui_spacer",
+        "z": "f290329962f30c67",
+        "name": "spacer",
+        "group": "4b22204e5a8579e1",
+        "order": 3,
+        "width": 6,
+        "height": 1
+    },
+    {
+        "id": "2431169b4e55e387",
+        "type": "ui_spacer",
+        "z": "f290329962f30c67",
+        "name": "spacer",
+        "group": "4b22204e5a8579e1",
+        "order": 5,
+        "width": 6,
+        "height": 1
+    },
+    {
+        "id": "4d6fd8ba3b9b650f",
+        "type": "ui_spacer",
+        "z": "f290329962f30c67",
+        "name": "spacer",
+        "group": "4b22204e5a8579e1",
+        "order": 6,
+        "width": 6,
+        "height": 1
+    },
+    {
+        "id": "aa3107cbb6f29f72",
+        "type": "mqtt-broker",
+        "name": "LocalHost",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "rockdrigoo1234",
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "4b22204e5a8579e1",
+        "type": "ui_group",
+        "name": "Valores de sensores",
+        "tab": "1ab4641a866d237c",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "5985bd1225719007",
+        "type": "MySQLdatabase",
+        "name": "",
+        "host": "127.0.0.1",
+        "port": "3306",
+        "db": "datos",
+        "tz": "",
+        "charset": "UTF8"
+    },
+    {
+        "id": "1ab4641a866d237c",
+        "type": "ui_tab",
+        "name": "Detector de sintomas COVID-19",
+        "icon": "dashboard",
+        "order": 7,
+        "disabled": false,
+        "hidden": false
+    }
+]
